@@ -29,6 +29,13 @@ class ReservaResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(50),
+                Forms\Components\Select::make('type')
+                    ->options([
+                        'boda' => 'Boda',
+                        'cumpleaños' => 'Cumpleaños',
+                        'bautizo' => 'Bautizo',
+                    ])
+                    ->required(),
                 Forms\Components\Select::make('cliente_id')
                     ->relationship('cliente', 'name')
                     ->searchable()

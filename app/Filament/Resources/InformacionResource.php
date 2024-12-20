@@ -23,19 +23,15 @@ class InformacionResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('notes')
                     ->required()
                     ->maxLength(50),
-                Forms\Components\Select::make('type')
-                    ->options([
-                        'boda' => 'Boda',
-                        'cumpleaños' => 'Cumpleaños',
-                        'bautizo' => 'Bautizo',
-                    ])
-                    ->required(),
-                Forms\Components\DatePicker::make('date_of_day')
+                Forms\Components\TextInput::make('description') // Cambiado de DatePicker a TextInput
                     ->required()
-                    ->maxDate(now()),
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('price') // Cambiado de DatePicker a TextInput
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\Select::make('cliente_id')
                     ->relationship('cliente', 'name')
                     ->searchable()

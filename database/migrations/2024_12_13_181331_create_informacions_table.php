@@ -1,4 +1,4 @@
-z<?php
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('informacions', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
+            $table->string('description')->nullable(); // Hacer que description sea opcional
             $table->text('notes')->nullable();
-            $table->foreignId('cliente_id') // Este es el nombre de la columna
+            $table->foreignId('cliente_id')->nullable() // Hacer que cliente_id sea opcional
                 ->constrained('clientes') // Nombre correcto de la tabla de referencia
                 ->onDelete('cascade');
             $table->unsignedInteger('price')->nullable();

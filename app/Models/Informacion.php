@@ -10,16 +10,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Informacion extends Model
 {
-    protected $fillable = ['name', 'email', 'phone'];
-    // use HasFactory;
+    use HasFactory;
+
+    protected $fillable = ['name', 'email', 'phone', 'price'];
+
     public function cliente(): BelongsTo
     {
         return $this->belongsTo(Cliente::class);
     }
- 
-    public function reserva(): HasMany
-    {
-        return $this->hasMany(Reserva::class);
-    }
-
 }

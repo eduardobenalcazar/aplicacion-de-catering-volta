@@ -4,17 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Informacion;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Cliente extends Model
-
 {
+    use HasFactory;
+
     protected $fillable = ['name', 'email', 'phone'];
-    // use HasFactory;
-    public function informacions(): HasMany
-    
+
+    public function informacion(): HasOne
     {
-        return $this->hasMany(Informacion::class);
+        return $this->hasOne(Informacion::class);
+    }
+
+    public function reservas(): HasMany
+    {
+        return $this->hasMany(Reserva::class);
     }
 }
